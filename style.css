@@ -17,8 +17,8 @@ h1 {
 
 p {
     padding: 10px;
-    text-align: left;
 }
+
 
 img {
     border-radius: 10px;
@@ -35,8 +35,9 @@ button {
     padding: 10px 20px;
     margin-bottom: 20px;
     cursor: pointer;
+    outline: none;
     animation: heartbeat 3s infinite;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 @keyframes heartbeat {
@@ -57,6 +58,6 @@ button {
     }
 }
 
-.goose:hover {
+.goose:active {
     background-color:rgb(214, 139, 40);
 }
