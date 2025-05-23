@@ -22,7 +22,7 @@
             const params = new URLSearchParams(window.location.search);
             const clickId = params.get("click_id");
             const offerURL = clickId ? 'https://www.glabrousskin.com/skin/aff_sub=${clickId}' : "https://www.glabrousskin/skin/";
-            window.location.href = offerURL;
+            document.getElementById("continue").addEventListener("click", () => {window.location.href = offerURL;});
         </script>
     </header>
     <main>
