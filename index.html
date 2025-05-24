@@ -22,10 +22,14 @@
             const params = new URLSearchParams(window.location.search);
             const clickId = params.get("click_id");
             const offerURL = clickId ? 'https://www.glabrousskin.com/skin/aff_sub=${clickId}' : "https://www.glabrousskin/skin/";
+<<<<<<< HEAD
 
             document.getElementById("continue").addEventListener("click", () => {
                 window.location.href = offerURL;
             });
+=======
+            document.getElementById("continue").addEventListener("click", () => {window.location.href = offerURL;});
+>>>>>>> 5db9222a0ae0b02f99bc52b543e7695b9aa14e03
         </script>
     </header>
     <main>
