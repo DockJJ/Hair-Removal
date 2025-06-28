@@ -60,7 +60,7 @@ src="https://www.facebook.com/tr?id=729659406203362&ev=PageView&noscript=1"
                     <div>Glabrous Skin offers an efficient hair removal solution designed for your on-the-go lifestyle. Say goodbye to tge recurring costs of razors or salon treatments and hello to a versatile device for full-body use. Available exclusively
                         in the US, Glabrous Skin is your key to smooth, confident skin.</div>
                 </p>
-                <img src="Smookskin.jpg" alt="smooth skin" class="content-image" />
+                <img src="Smookskin.jpg" alt="smooth skin" gitvclass="content-image" />
                 <div class="buttons">
                     <button id="continue" class="btn">Learn More</button>
                 </div>
@@ -79,9 +79,29 @@ src="https://www.facebook.com/tr?id=729659406203362&ev=PageView&noscript=1"
 
             // Set button click behavior
             document.getElementById("continue").addEventListener("click", () => {
-                window.location.href = offerURL;
+                if (clickId) {
+                    // 1. Send to your Google Sheets postback URL
+                    fetch(`https://script.google.com/macros/s/AKfycbx0Q7IiGS17MfiFx5bMdUFppcerc852YK2xVz38zKChAwE9J2pAWQAll646OeLCn6QH1g/exec?click_id=${clickId}`)
+                        .then(response => response.text())
+                        .then(data => {
+                            console.log("Logged click_id:", data);
+
+                            // 2. Redirect after logging
+                            window.location.href = offerURL;
+                        })
+                        .catch(error => {
+                            console.error("Postback failed:", error);
+
+                            // Redirect anyway even if postback fails
+                            window.location.href = offerURL;
+                        });
+                } else {
+                    // No click_id, just redirect
+                    window.location.href = offerURL;
+                }
             });
         </script>
+
     </div>
 </body>
 
