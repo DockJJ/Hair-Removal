@@ -44,35 +44,45 @@ src="https://www.facebook.com/tr?id=729659406203362&ev=PageView&noscript=1"
 </head>
 
 <body>
-    <header>
-        <h1>Discover Glabrous Skin</h1>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Discover Effortless Hair Removal with Glabrous Skin</h1>
+        </header>
 
-    <main>
-        <section>
-            <img src="Smookskin.jpg" alt="smooth skin" width="350" height="400" class="img-fluid" />
-            <p>Save Money And Time With The 100% Safe Hair Removal Method.</p>
-            <p>Are you tired of spending money on expensive hair removal treatments? Do you want to achieve smooth, hair-free skin?</p>
-            <p>Discover the best hair removal method that is not only effective but also safe for your skin. Glabrous Skin Hair Removal.</p>
-            <button id="continue" class="goose">Get It Here</button>
-        </section>
-    </main>
 
-    <script>
-        // Get click_id from URL
-        const params = new URLSearchParams(window.location.search);
-        const clickId = params.get("click_id");
+        <main>
+            <div class="content">
 
-        // Build the offer URL
-        const offerURL = clickId ?
-            `https://www.glabrousskin.com/skin/?click_id=${clickId}` :
-            "https://www.glabrousskin.com/skin/";
+                <p class="subheading">
+                    Are you a busy professional, frequent traveler, or fitness enthusiast who values personal grooming?
+                </p>
+                <p class="body-text">
+                    <div>Glabrous Skin offers an efficient hair removal solution designed for your on-the-go lifestyle. Say goodbye to tge recurring costs of razors or salon treatments and hello to a versatile device for full-body use. Available exclusively
+                        in the US, Glabrous Skin is your key to smooth, confident skin.</div>
+                </p>
+                <img src="Smookskin.jpg" alt="smooth skin" class="content-image" />
+                <div class="buttons">
+                    <button id="continue" class="btn">Learn More</button>
+                </div>
+            </div>
+        </main>
 
-        // Set button click behavior
-        document.getElementById("continue").addEventListener("click", () => {
-            window.location.href = offerURL;
-        });
-    </script>
+        <script>
+            // Get click_id from URL
+            const params = new URLSearchParams(window.location.search);
+            const clickId = params.get("click_id");
+
+            // Build the offer URL
+            const offerURL = clickId ?
+                `https://www.glabrousskin.com/skin/?click_id=${clickId}` :
+                "https://www.glabrousskin.com/skin/";
+
+            // Set button click behavior
+            document.getElementById("continue").addEventListener("click", () => {
+                window.location.href = offerURL;
+            });
+        </script>
+    </div>
 </body>
 
 </html>
