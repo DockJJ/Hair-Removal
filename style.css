@@ -34,7 +34,7 @@ h1 {
 .content-image {
     width: 70%;
     height: 60%;
-    object-fit: cover;
+    object-fit: cover
     display: block;
     margin-bottom: 0 auto;
 }
