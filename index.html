@@ -1,108 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Explore the best hair removal method for smooth skin." />
-    <meta name="keywords" content="hair removal, smooth skin, beauty tips" />
-    <title>Hair Removal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore the best hair removal method for smooth skin." />
+  <meta name="keywords" content="hair removal, smooth skin, beauty tips" />
+  <title>Hair Removal</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-    <!-- Your custom CSS -->
-    <link rel="stylesheet" href="style.css" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
 
-
-    <!-- Meta Pixel Code -->
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '729659406203362');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=729659406203362&ev=PageView&noscript=1"
-/></noscript>
-    <!-- End Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s) {
+      if(f.fbq)return;n=f.fbq=function(){
+        n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '729659406203362');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=729659406203362&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Discover Effortless Hair Removal with Glabrous Skin</h1>
-        </header>
+  <div class="container">
+    <header>
+      <h1>Discover Effortless Hair Removal with Glabrous Skin</h1>
+    </header>
 
+    <main>
+      <div class="content">
+        <p class="subheading">
+          Are you a busy professional, frequent traveler, or fitness enthusiast who values personal grooming?
+        </p>
+        <p class="body-text">
+          <div>
+            Glabrous Skin offers an efficient hair removal solution designed for your on-the-go lifestyle.
+            Say goodbye to the recurring costs of razors or salon treatments and hello to a versatile device for full-body use.
+            Available exclusively in the US, Glabrous Skin is your key to smooth, confident skin.
+          </div>
+        </p>
+        <img src="Smookskin.jpg" alt="smooth skin" class="content-image" />
 
-        <main>
-            <div class="content">
+        <div class="buttons">
+          <button id="continue" class="btn btn-primary">Learn More</button>
+        </div>
+      </div>
+    </main>
 
-                <p class="subheading">
-                    Are you a busy professional, frequent traveler, or fitness enthusiast who values personal grooming?
-                </p>
-                <p class="body-text">
-                    <div>Glabrous Skin offers an efficient hair removal solution designed for your on-the-go lifestyle. Say goodbye to tge recurring costs of razors or salon treatments and hello to a versatile device for full-body use. Available exclusively
-                        in the US, Glabrous Skin is your key to smooth, confident skin.</div>
-                </p>
-                <img src="Smookskin.jpg" alt="smooth skin" class="content-image" />
-                <div class="buttons">
-                    <button id="continue" class="btn">Learn More</button>
-                </div>
-            </div>
-        </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const clickId = params.get("click_id");
 
-        <script>
-            // Get click_id from URL
-            const params = new URLSearchParams(window.location.search);
-            const clickId = params.get("click_id");
+      // Build the affiliate offer URL with click_id passed as sub1
+      const offerURL = clickId
+        ? `https://rewarduplevel.com/aff_c?offer_id=1906&aff_id=102520&sub1=${clickId}`
+        : "https://rewarduplevel.com/aff_c?offer_id=1906&aff_id=102520";
 
-            // Build the offer URL
-            const offerURL = clickId ?
-                `https://www.glabrousskin.com/skin/?click_id=${clickId}` :
-                "https://www.glabrousskin.com/skin/";
-
-            // Set button click behavior
-            document.getElementById("continue").addEventListener("click", () => {
-                if (clickId) {
-                    // 1. Send to your Google Sheets postback URL
-                    fetch(`https://script.google.com/macros/s/AKfycbx0Q7IiGS17MfiFx5bMdUFppcerc852YK2xVz38zKChAwE9J2pAWQAll646OeLCn6QH1g/exec?click_id=${clickId}`)
-                        .then(response => response.text())
-                        .then(data => {
-                            console.log("Logged click_id:", data);
-
-                            // 2. Redirect after logging
-                            window.location.href = offerURL;
-                        })
-                        .catch(error => {
-                            console.error("Postback failed:", error);
-
-                            // Redirect anyway even if postback fails
-                            window.location.href = offerURL;
-                        });
-                } else {
-                    // No click_id, just redirect
-                    window.location.href = offerURL;
-                }
+      // Button click behavior
+      document.getElementById("continue").addEventListener("click", () => {
+        if (clickId) {
+          // Log the click to Google Sheets
+          fetch(`https://script.google.com/macros/s/AKfycbx0Q7IiGS17MfiFx5bMdUFppcerc852YK2xVz38zKChAwE9J2pAWQAll646OeLCn6QH1g/exec?click_id=${clickId}&status=clicked`)
+            .then(response => response.text())
+            .then(data => {
+              console.log("Click logged:", data);
+              window.location.href = offerURL;
+            })
+            .catch(error => {
+              console.error("Postback failed:", error);
+              window.location.href = offerURL;
             });
-        </script>
-
-    </div>
+        } else {
+          window.location.href = offerURL;
+        }
+      });
+    </script>
+  </div>
 </body>
-
 </html>
