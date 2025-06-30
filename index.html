@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,27 +14,30 @@
 
   <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s) {
-      if(f.fbq)return;n=f.fbq=function(){
-        n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)
+    !function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '729659406203362');
     fbq('track', 'PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=729659406203362&ev=PageView&noscript=1"/>
-  </noscript>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=729659406203362&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
-
-<script>
-    fbq('track', 'InitiateCheckout');
-</script>
 </head>
 
 <body>
@@ -66,30 +70,37 @@
       const params = new URLSearchParams(window.location.search);
       const clickId = params.get("click_id");
 
-      // Build the affiliate offer URL with click_id passed as sub1
+      // Use affiliate tracking link (not the final offer directly)
       const offerURL = clickId
-        ? `https://rewarduplevel.com/aff_c?offer_id=1906&aff_id=102520&sub1=${clickId}`
-        : "https://rewarduplevel.com/aff_c?offer_id=1906&aff_id=102520";
+        ? `https://rewarrdsgiant.com/aff_c?offer_id=1906&aff_id=102520&sub1=${clickId}`
+        : `https://rewarrdsgiant.com/aff_c?offer_id=1906&aff_id=102520`;
 
-      // Button click behavior
       document.getElementById("continue").addEventListener("click", () => {
-        if (clickId) {
-          // Log the click to Google Sheets
-          fetch(`https://script.google.com/macros/s/AKfycbx0Q7IiGS17MfiFx5bMdUFppcerc852YK2xVz38zKChAwE9J2pAWQAll646OeLCn6QH1g/exec?click_id=${clickId}&status=clicked`)
-            .then(response => response.text())
-            .then(data => {
-              console.log("Click logged:", data);
-              window.location.href = offerURL;
-            })
-            .catch(error => {
-              console.error("Postback failed:", error);
-              window.location.href = offerURL;
-            });
-        } else {
+        try {
+          // Fire Facebook Pixel event
+          if (typeof fbq === "function") {
+            fbq('track', 'InitiateCheckout');
+          }
+
+          if (clickId) {
+            // Log click to Google Sheets
+            fetch(`https://script.google.com/macros/s/AKfycbx0Q7IiGS17MfiFx5bMdUFppcerc852YK2xVz38zKChAwE9J2pAWQAll646OeLCn6QH1g/exec?click_id=${clickId}&status=clicked`)
+              .then(() => {
+                window.location.href = offerURL;
+              })
+              .catch(() => {
+                window.location.href = offerURL;
+              });
+          } else {
+            window.location.href = offerURL;
+          }
+        } catch (err) {
+          console.error("Script error:", err);
           window.location.href = offerURL;
         }
       });
     </script>
   </div>
 </body>
+
 </html>
